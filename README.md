@@ -12,3 +12,4 @@ and the user can use the auto-suggest box or directly put the map marker on his 
 The map will give the required fields which will be saved along with other info.
 
  
+Can't connect to any repository: https://github.com/iamkhush/django-mapistration.git (https://github.com/iamkhush/django-mapistration.git: not authorized)
