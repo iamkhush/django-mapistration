@@ -22,16 +22,8 @@ setup(
         'tastypie': ['templates/tastypie/*'],
     },
     zip_safe=False,
-    requires=[
-        'mimeparse',
-        'dateutil(>=1.5, < 2.0)',
-    ],
-    install_requires=[
-        'mimeparse',
-        'python_dateutil >= 1.5, < 2.0',
-    ],
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 1 - Beta',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
