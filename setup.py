@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 try:
-    from setuptools import setup
+    from setuptools import setup, find_packages
 except ImportError:
     from ez_setup import use_setuptools
     use_setuptools()
-    from setuptools import setup
+    from setuptools import setup, find_packages
 
 setup(
     name='django-mapistration',
@@ -15,15 +15,13 @@ setup(
     author_email='ankush.chadda@gmail.com',
     url='https://github.com/iamkhush/django-mapistration',
     long_description=open('README.md', 'r').read(),
-    packages=[
-        'mapistration',
-    ],
-    package_data={
-        'tastypie': ['templates/tastypie/*'],
+    packages=find_packages(),
+    package_data = {
+    '': ['docs/*.txt', 'docs/*.rst'],
     },
     zip_safe=False,
     classifiers=[
-        'Development Status :: 1 - Beta',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Django',
         'Intended Audience :: Developers',
