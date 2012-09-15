@@ -1,0 +1,112 @@
+<script type="text/javascript" 
+	src="https://maps.googleapis.com/maps/api/js?sensor=true&libraries=places">
+</script>
+<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js">
+</script>
+
+<script type="text/javascript">
+	function initialize() {
+		var mapOptions = {
+			center: new google.maps.LatLng(-33.8688, 151.2195), //todo = set this as default
+			zoom: 13, // default this as well
+			mapTypeId: google.maps.MapTypeId.ROADMAP //default
+		};
+		
+		var map = new google.maps.Map(document.getElementById('map_canvas'),
+			mapOptions);
+	
+		var multi = false;
+		var input = document.getElementById('searchTextField');
+		var autocomplete = $([]);
+		if (!input) {
+			multi = true;
+			var input = $('.searchTextField');
+			input.each(function(){
+				autocomplete.push(new google.maps.places.Autocomplete(this));
+			});
+		}
+		else {
+			autocomplete.push(new google.maps.places.Autocomplete(input));
+			//autocomplete.bindTo('bounds', map);
+		}
+	
+		var infowindow = new google.maps.InfoWindow();
+		var marker = new google.maps.Marker({
+			map: map
+		});
+			
+		autocomplete.each(function(index){
+			google.maps.event.addListener(this, 'place_changed', function() {
+				infowindow.close();
+				var place = this.getPlace();
+				if (place.geometry.viewport) {
+					map.fitBounds(place.geometry.viewport);
+				} 
+				else {
+					map.setCenter(place.geometry.location);
+					map.setZoom(17);  // Why 17? Because it looks good.
+				}
+		
+				var image = new google.maps.MarkerImage(
+					place.icon,
+					new google.maps.Size(71, 71),
+					new google.maps.Point(0, 0),
+					new google.maps.Point(17, 34),
+					new google.maps.Size(35, 35)
+				);
+				marker.setIcon(image);
+				marker.setPosition(place.geometry.location);
+				  
+				if (place.address_components) {
+					$.each(place.address_components,function(){
+						//city
+						if (this.types[0] == 'locality' ) {
+							$('#id_form-'+index+'-city').val(this.long_name);
+							$('#id_city').val(this.long_name);
+						}
+					
+						//province/state
+						if (this.types[0] == 'administrative_area_level_1' || 
+							this.types[0] == 'administrative_area_level_2' || 
+							this.types[0] == 'administrative_area_level_3') {
+								$('#id_form-'+index+'-state').val(this.long_name);
+								$('#id_state').val(this.long_name);
+							}
+						//postal code
+						if(this.types[0] == 'postal_code'){
+							$('#id_zip_code').val(this.long_name);
+						}
+					 
+						//country
+						if(this.types[0] == 'country'){
+							$('#id_country').val(this.long_name);
+						}
+					
+					});
+			  	}
+	
+				var address = '';
+				if (place.address_components) {
+				address = [(place.address_components[0] &&
+					place.address_components[0].short_name || ''),
+					(place.address_components[1] &&
+					place.address_components[1].short_name || ''),
+					(place.address_components[2] &&
+					place.address_components[2].short_name || '')
+					].join(' ');
+				}
+		
+				infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+				infowindow.open(map, marker);
+	
+				//set lat and long
+				$('#id_form-'+index+'-latitude').val(place.geometry.location.lat());
+				$('#id_latitude').val(place.geometry.location.lat());
+				$('#id_form-'+index+'-longitude').val(place.geometry.location.lng());
+				$('#id_longitude').val(place.geometry.location.lng());
+			});
+		});
+	}
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
