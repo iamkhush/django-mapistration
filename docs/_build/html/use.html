@@ -8,7 +8,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Welcome to mapistration’s documentation! &mdash; mapistration beta documentation</title>
+    <title>How to Use Mapistration &mdash; mapistration beta documentation</title>
     
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -25,8 +25,8 @@
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="mapistration beta documentation" href="#" />
-    <link rel="next" title="Installation:" href="installation.html" /> 
+    <link rel="top" title="mapistration beta documentation" href="index.html" />
+    <link rel="prev" title="Installation:" href="installation.html" /> 
   </head>
   <body>
     <div class="related">
@@ -37,8 +37,8 @@
              accesskey="I">index</a></li>
         <li class="right" >
           <a href="installation.html" title="Installation:"
-             accesskey="N">next</a> |</li>
-        <li><a href="#">mapistration beta documentation</a> &raquo;</li> 
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">mapistration beta documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,26 +47,43 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="welcome-to-mapistration-s-documentation">
-<h1>Welcome to mapistration&#8217;s documentation!<a class="headerlink" href="#welcome-to-mapistration-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation:</a></li>
-<li class="toctree-l1"><a class="reference internal" href="use.html">How to Use Mapistration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="use.html#template-changes">Template Changes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="use.html#form-changes">Form Changes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="use.html#model-changes">Model Changes</a></li>
-</ul>
+  <div class="section" id="how-to-use-mapistration">
+<h1>How to Use Mapistration<a class="headerlink" href="#how-to-use-mapistration" title="Permalink to this headline">¶</a></h1>
+<p>Follow Installing Instructtions First</p>
 </div>
+<div class="section" id="template-changes">
+<h1>Template Changes<a class="headerlink" href="#template-changes" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic simple">
+<li>Add a div in your user registration template . Make sure it has a id=&#8217;map_canvas&#8217;</li>
+<li>Add {% include &#8216;maps&#8217; %} . Make sure this include tag is below the div created above</li>
+</ol>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><em>Index</em></a></li>
-<li><a class="reference internal" href="py-modindex.html"><em>Module Index</em></a></li>
-<li><a class="reference internal" href="search.html"><em>Search Page</em></a></li>
-</ul>
+<div class="section" id="form-changes">
+<h1>Form Changes<a class="headerlink" href="#form-changes" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><p class="first">Make your Registration form inherit the LocationForm from the app</p>
+<blockquote>
+<div><p>from mapistration.forms import LocationForm</p>
+<dl class="docutils">
+<dt>class UserForm(LocationForm):</dt>
+<dd><p class="first last">full_name = forms.CharField(max_length=50) #example</p>
+</dd>
+</dl>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="model-changes">
+<h1>Model Changes<a class="headerlink" href="#model-changes" title="Permalink to this headline">¶</a></h1>
+<p>1) Link your registration model to mapistration Place Model
+You can use OneToOneField or ForeignKey according to your requiremnts.</p>
+<blockquote>
+<div><p>from mapistration.models import Place</p>
+<dl class="docutils">
+<dt>class UserRegistrationModel(models.Model):</dt>
+<dd>location = models.OneToOneField(Place)</dd>
+</dl>
+</div></blockquote>
 </div>
 
 
@@ -75,20 +92,20 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="#">Table Of Contents</a></h3>
+  <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Welcome to mapistration&#8217;s documentation!</a><ul>
-</ul>
-</li>
-<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#">How to Use Mapistration</a></li>
+<li><a class="reference internal" href="#template-changes">Template Changes</a></li>
+<li><a class="reference internal" href="#form-changes">Form Changes</a></li>
+<li><a class="reference internal" href="#model-changes">Model Changes</a></li>
 </ul>
 
-  <h4>Next topic</h4>
+  <h4>Previous topic</h4>
   <p class="topless"><a href="installation.html"
-                        title="next chapter">Installation:</a></p>
+                        title="previous chapter">Installation:</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="_sources/index.txt"
+    <li><a href="_sources/use.txt"
            rel="nofollow">Show Source</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -116,8 +133,8 @@
              >index</a></li>
         <li class="right" >
           <a href="installation.html" title="Installation:"
-             >next</a> |</li>
-        <li><a href="#">mapistration beta documentation</a> &raquo;</li> 
+             >previous</a> |</li>
+        <li><a href="index.html">mapistration beta documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
