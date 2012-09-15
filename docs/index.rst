@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    installation
+   use
 
 Indices and tables
 ==================

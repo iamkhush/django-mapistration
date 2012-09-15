@@ -17,4 +17,4 @@ The map will give the required fields which will be saved along with other info.
 Documentation
 =============
 
-Read docs here at http://readthedocs.org/projects/django-mapistration/
+Read docs here at http://django-mapistration.readthedocs.org/
