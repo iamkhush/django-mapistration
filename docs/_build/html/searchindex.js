@@ -1,0 +1,1 @@
+Search.setIndex({objects:{},terms:{right:1,modul:0,indic:0,tabl:0,pip:1,syncdb:1,installed_app:1,your:1,mapistr:[0,1],index:0,welcom:0,content:0,add:1,you:1,document:0,instal:[0,1],app:1,sourc:1,run:1,now:1,avail:1,search:0,django:1,can:1,page:0},objtypes:{},titles:["Welcome to mapistration&#8217;s documentation!","Installation:"],objnames:{},filenames:["index","installation"]})
