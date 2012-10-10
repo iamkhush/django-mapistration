@@ -3,7 +3,7 @@ Installation:
 
 1) Install the app
 
-  a) You can pip it (not available right now) => pip install django-mapistration
+  a) You can pip install it => pip install django-mapistration
   or
   b) You can install it by source
   
