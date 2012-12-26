@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 try:
     from setuptools import setup, find_packages
 except ImportError:
@@ -9,16 +10,14 @@ except ImportError:
 
 setup(
     name='django-mapistration',
-    version='0.1',
+    version='0.4',
     description='Map integration with registration form',
     author='iamkhush',
     author_email='ankush.chadda@gmail.com',
     url='https://github.com/iamkhush/django-mapistration',
-    long_description=open('README.md', 'r').read(),
+    long_description=open('README.rst', 'r').read(),
     packages=find_packages(),
-    package_data = {
-    '': ['docs/*.txt', 'docs/*.rst'],
-    },
+    install_requires=['django'], 
     zip_safe=False,
     classifiers=[
         'Development Status :: 4 - Beta',
